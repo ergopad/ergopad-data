@@ -3,7 +3,7 @@ version: '3.9'
 services:
   postgres:
     container_name: postgres
-    env_file: ${ENV}/.env
+    env_file: ${ENV_FILE}
     image: postgres:14
     restart: always
     volumes: 
@@ -15,7 +15,7 @@ services:
 
   redis:
     container_name: redis
-    env_file: ${ENV}/.env
+    env_file: ${ENV_FILE}
     image: redis
     volumes: 
       - redis_vol:/data # redis persistence
