@@ -1,0 +1,16 @@
+logs/
+.env
+.git
+*.md
+.cache
+__pycache__
+.pytest_cache
+node_modules
+npm-debug.log
+Dockerfile*
+docker-compose*
+.dockerignore
+.gitignore
+README.md
+LICENSE
+.vscode

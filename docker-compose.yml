@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  postgres:
+    container_name: postgres
+    env_file: app/.env
+    image: postgres:14
+    restart: always
+    volumes: 
+      - postgres_vol:/var/lib/postgresql/data:cached
+    ports: 
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    networks:
+      - net
+
+  redis:
+    container_name: redis
+    env_file: app/.env
+    image: redis
+    volumes: 
+      - redis_vol:/data # redis persistence
+    ports: 
+      - ${REDIS_PORT}:${REDIS_PORT}
+    networks:
+      - net
+    entrypoint: redis-server --appendonly yes
+
+volumes:
+  postgres_vol:
+  redis_vol:
+
+networks:
+  net:
+    driver: bridge
