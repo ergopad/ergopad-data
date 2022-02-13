@@ -1,2 +1,0 @@
-# ergopad-data
-postgres, redis
