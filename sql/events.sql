@@ -29,3 +29,29 @@ VALUES (2, 'strategic-ergopad-202201', 'ErgoPad Strategic', 'ERGO', 100000.0, 20
 
 INSERT INTO "events" ("id", "name", "description", "blockChain", "total_sigusd", "buffer_sigusd", "owner", "start_dtz", "end_dtz", "isWhitelist")
 VALUES (3, 'presale-ergopad-202201wl', 'ErgoPad Presale', 'ERGO', 600000.0, 600000.0, 'sigma@ergopad.io', '1/15/2022 17:00', '1/17/2022 17:00', 1);
+
+DROP TABLE "eventsIp";
+-- eventsIp
+CREATE TABLE "eventsIp" (
+    id SERIAL PRIMARY KEY,
+    "walletId" INT NOT NULL,
+    "eventId" INT NOT NULL,
+    "ipHash" TEXT,
+    CONSTRAINT fk_wallets FOREIGN KEY("walletId") REFERENCES wallets(id),
+    CONSTRAINT fk_events FOREIGN KEY("eventId") REFERENCES events(id)
+);
+
+INSERT INTO
+    "eventsIp" (
+        id,
+        "walletId",
+        "eventId",
+        "ipHash"
+    )
+VALUES
+    (
+        -1,
+        -1,
+        -1,
+        '__unknown'
+    );
