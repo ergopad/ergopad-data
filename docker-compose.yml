@@ -5,6 +5,7 @@ services:
     container_name: postgres
     env_file: ${ENV_FILE}
     image: postgres:14
+    shm_size: 512m
     restart: always
     volumes: 
       - postgres_vol:/var/lib/postgresql/data:cached
