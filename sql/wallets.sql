@@ -12,6 +12,9 @@ CREATE TABLE "wallets" (
     "socialPlatform" TEXT NULL,
     "chatHandle" TEXT NULL,
     "chatPlatform" TEXT NULL,
+    "discordHandle" TEXT NULL,
+    "twitterHandle" TEXT NULL,
+    "telegramHandle" TEXT NULL,
     "created_dtz" timestamptz NOT NULL DEFAULT now(),
     "lastSeen_dtz" timestamptz NOT NULL DEFAULT now()
 );
