@@ -10,6 +10,5 @@ create table "whitelistEvents" (
     details TEXT,
     "checkBoxes" JSON,
     "additionalDetails" JSON,
-    CONSTRAINT fk_event_id FOREIGN KEY("eventId")
-    REFERENCES events(id)
+    UNIQUE("projectName", "roundName")
 );
