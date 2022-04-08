@@ -16,7 +16,7 @@ CREATE TABLE projects (
     "fundsRaised" REAL DEFAULT 0,
     "bannerImgUrl" TEXT NOT NULL,
     "isLaunched" BOOLEAN NOT NULL,
-    socials JSON DEFAULT '{ "socials" : [] }',
+    socials JSON DEFAULT '{ }',
     roadmap JSON DEFAULT '{ "roadmap" : [] }',
     team JSON DEFAULT '{ "team" : [] }',
     tokenomics JSON DEFAULT '{ "tokenomics" : [] }'
