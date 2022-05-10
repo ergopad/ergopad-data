@@ -55,3 +55,8 @@ VALUES
         -1,
         '__unknown'
     );
+
+ALTER TABLE
+    "eventsIp" DROP CONSTRAINT fk_events,
+ADD
+    CONSTRAINT fk_events FOREIGN KEY ("eventId") REFERENCES events (id) ON DELETE CASCADE;
