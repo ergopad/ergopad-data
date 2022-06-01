@@ -5,7 +5,7 @@ services:
     container_name: postgres
     env_file: ${ENV_FILE}
     image: postgres:14
-    shm_size: 512m
+    shm_size: 2gb
     restart: always
     volumes: 
       - postgres_vol:/var/lib/postgresql/data:cached
@@ -13,6 +13,7 @@ services:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
     networks:
       - net
+      - ergopad-net
 
   redis:
     container_name: redis
@@ -24,6 +25,7 @@ services:
       - ${REDIS_PORT}:${REDIS_PORT}
     networks:
       - net
+      - ergopad-net
     entrypoint: redis-server --appendonly yes
 
 volumes:
@@ -33,3 +35,5 @@ volumes:
 networks:
   net:
     driver: bridge
+  ergopad-net:
+    external: true
