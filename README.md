@@ -8,6 +8,7 @@ https://github.com/rqlite/rqlite
 docker exec -it rqlite sh
 - rqlite -H rqlite
 - rqlite -H rqlite1 -p 4102
+- http://container:4001/status
 create basic table
 - create table hello (id int primary key not null, name)
 
