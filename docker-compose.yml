@@ -28,6 +28,32 @@ services:
       - ergopad-net
     entrypoint: redis-server --appendonly yes
 
+  rqlite:
+    container_name: rqlite
+    env_file: ${ENV_FILE}
+    image: rqlite/rqlite
+    volumes:
+      - ./rqlite/node.0:/rqlite/node
+    ports: 
+      - ${RQLITE_MASTER}:${RQLITE_MASTER}
+      - ${RQLITE0_RAFT}:${RQLITE0_RAFT}
+    networks:
+      - ergopad-net
+    command: rqlited -node-id 0 -http-addr rqlite:${RQLITE_MASTER} -raft-addr rqlite:${RQLITE0_RAFT} ~/node
+
+  rqlite1:
+    container_name: rqlite1
+    env_file: ${ENV_FILE}
+    image: rqlite/rqlite
+    volumes:
+      - ./rqlite/node.1:/rqlite/node
+    ports: 
+      - ${RQLITE1_PORT}:${RQLITE1_PORT}
+      - ${RQLITE1_RAFT}:${RQLITE1_RAFT}
+    networks:
+      - ergopad-net
+    command: rqlited -node-id 1 -http-addr rqlite1:${RQLITE1_PORT} -raft-addr rqlite1:${RQLITE1_RAFT} -join http://rqlite:${RQLITE_MASTER} ~/node
+
 volumes:
   postgres_vol:
   redis_vol:
