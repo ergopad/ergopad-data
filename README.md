@@ -23,3 +23,4 @@ selecting data
 
 ### notes
 - ?? is rqlite compatible with sqlite driver with sqlalchemy
+https://github.com/rqlite/sqlalchemy-rqlite
