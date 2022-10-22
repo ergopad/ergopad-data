@@ -42,3 +42,5 @@ SELECT
     CAST(socials AS JSON)
 FROM
     projects_v1;
+
+ALTER TABLE projects ADD COLUMN "isDraft" BOOLEAN DEFAULT false;
