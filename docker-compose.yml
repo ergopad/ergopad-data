@@ -13,6 +13,11 @@ services:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
     networks:
       - ergopad-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d ${POSTGRES_DB} -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   redis:
     container_name: redis
@@ -25,6 +30,8 @@ services:
       - ${REDIS_PORT}:${REDIS_PORT}
     networks:
       - ergopad-net
+    healthcheck:
+      test: ["CMD", "redis-cli","ping"]
     entrypoint: redis-server --appendonly yes
 
 volumes:
