@@ -12,3 +12,13 @@ CREATE TABLE "whitelist" (
     "lastAssemblerStatus" TEXT,
     "isWhitelist" SMALLINT DEFAULT 0
 );
+
+-- cardano addresses
+CREATE TABLE cardano_metadata_whitelist_ext (
+    id SERIAL PRIMARY KEY,
+    kyc_approval BOOLEAN DEFAULT FALSE,
+    ada_address_list JSON DEFAULT '[]'
+);
+
+-- no constraints allows null
+ALTER TABLE whitelist ADD cardano_metadata_whitelist_ext_id INT;
